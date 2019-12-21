@@ -53,6 +53,7 @@ class Ro extends Regex
 	 */
     protected $blockItems = array(
             1 => array('/registered on:(?>[\x20\t]*)(.+)$/im' => 'created', 
+                    '/expires on:(?>[\x20\t]*)(.+)$/im' => 'expires', 
                     '/registrar:(?>[\x20\t]*)(.+)$/im' => 'registrar:name', 
                     '/nameserver:(?>[\x20\t]*)(.+)$/im' => 'nameserver', 
                     '/domain status:(?>[\x20\t]*)(.+)$/im' => 'status'));
