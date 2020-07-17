@@ -104,7 +104,7 @@ class Config
         }
 
         $defaults = array(
-            'server' => '',
+            'server' => $template,
             'port' => 43,
             'format' => '%domain%',
             'template' => $template,

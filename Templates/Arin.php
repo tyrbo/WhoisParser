@@ -111,8 +111,9 @@ class Arin extends Regex
         }
         
         if (isset($Result->referral_server) && $Result->referral_server != '') {
+            $referralServer = $Result->referral_server;
             $Result->reset();
-            $mapping = $Config->get($Result->referral_server);
+            $mapping = $Config->get($referralServer);
             $template = str_replace('whois://', '', $mapping['template']);
             $Config->setCurrent($Config->get($template));
             $WhoisParser->call();
