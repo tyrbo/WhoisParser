@@ -64,7 +64,7 @@ class Afrinic extends Regex
             
             2 => array('/^organisation:(?>[\x20\t]*)(.+)$/im' => 'contacts:handle', 
                     '/^org:(?>[\x20\t]*)(.+)$/im' => 'contacts:handle', 
-                    '/^nic-hdl:(?>[\x20\t]*)(.+)$/im' => 'contacts:handle', 
+                    '/^nic-hdl:(?>[\x20\t]*)(.+)$/im' => 'contacts:tech:handle', 
                     '/^org-name:(?>[\x20\t]*)(.+)$/im' => 'contacts:name', 
                     '/^role:(?>[\x20\t]*)(.+)$/im' => 'contacts:name', 
                     '/^person:(?>[\x20\t]*)(.+)$/im' => 'contacts:name', 
