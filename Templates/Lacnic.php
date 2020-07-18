@@ -44,7 +44,7 @@ class Lacnic extends Regex
 	 * @access protected
 	 */
     protected $blocks = array(1 => '/(inetnum|inet6num):[\s]*(.*?)[\n]{2}/is', 
-            2 => '/nic-hdl:[\s]*(.*?)[\n]{2}/is');
+            2 => '/nic-hdl(?:-.{2})?:[\s]*(.*?)[\n]{2}/is');
 
     /**
 	 * Items for each block
@@ -68,7 +68,7 @@ class Lacnic extends Regex
             
             2 => array('/^organisation:(?>[\x20\t]*)(.+)$/im' => 'contacts:handle', 
                     '/^org:(?>[\x20\t]*)(.+)$/im' => 'contacts:handle', 
-                    '/^nic-hdl:(?>[\x20\t]*)(.+)$/im' => 'contacts:handle', 
+                    '/^nic-hdl(?:-.{2})?:(?>[\x20\t]*)(.+)$/im' => 'contacts:handle',
                     '/^org-name:(?>[\x20\t]*)(.+)$/im' => 'contacts:name', 
                     '/^role:(?>[\x20\t]*)(.+)$/im' => 'contacts:name', 
                     '/^person:(?>[\x20\t]*)(.+)$/im' => 'contacts:name', 
