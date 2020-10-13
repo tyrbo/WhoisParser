@@ -360,7 +360,13 @@ class Parser
                 $this->Result->addItem('idnName', $this->Query->idnFqdn);
             }
         } else {
-            throw new NoTemplateException('Template '. $Config['template'] .' could not be found');
+            if (false !== strpos($this->rawdata,'Ubersmith RWhois Server')) {
+                $this->Result->reset();
+                $this->Config->setCurrent($this->Config->get('Ubersmith'));
+                $this->parse();
+            } else {
+                throw new NoTemplateException('Template '. $Config['template'] .' could not be found');
+            }
         }
     }
 
