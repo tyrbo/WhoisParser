@@ -360,7 +360,7 @@ class Parser
                 $this->Result->addItem('idnName', $this->Query->idnFqdn);
             }
         } else {
-            if (false !== strpos($this->rawdata,'Ubersmith RWhois Server')) {
+            if (false !== strpos($this->rawdata,'rwhois')) {
                 $this->Result->reset();
                 $this->Config->setCurrent($this->Config->get('Ubersmith'));
                 $this->parse();
