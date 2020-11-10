@@ -110,7 +110,7 @@ class Arin extends Regex
             }
         }
         
-        if (isset($Result->referral_server) && $Result->referral_server != '' && $Result->referral_server != 'rwhois://rwhois.shawcable.net:4321' && $Result->referral_server != 'rwhois://rwhois.perfectip.net:4321') {
+        if (isset($Result->referral_server) && $Result->referral_server != '' && $Result->referral_server != 'rwhois://rwhois.shawcable.net:4321' && $Result->referral_server != 'rwhois://rwhois.perfectip.net:4321' && $Result->referral_server != 'rwhois://rwhois.xmission.com:4321') {
             $referralServer = $Result->referral_server;
             $Result->reset();
             $mapping = $Config->get($referralServer);
