@@ -209,22 +209,28 @@ class Parser
             $this->Config->setCurrent($config);
             $this->call();
         } catch (AbstractException $e) {
-            if ($this->throwExceptions) {
-                throw $e;
-            }
-            
-            $this->Result->addItem('exception', $e->getMessage());
-            $this->Result->addItem('rawdata', $this->rawdata);
-            
-            if (isset($this->Query)) {
-                
-                if (isset($this->Query->ip)) {
-                    $this->Result->addItem('name', $this->Query->ip);
-                } else {
-                    $this->Result->addItem('name', $this->Query->fqdn);
-                }
+            if (strpos($e->getMessage(), 'Unable to connect') !== false) {
+                // If unable to connect, use the prereferralconfig
+                //  Some referall servers fail, timeout, etc.
+                return $this->Config->prereferralResult;
             } else {
-                $this->Result->addItem('name', $query);
+                if ($this->throwExceptions) {
+                    throw $e;
+                }
+
+                $this->Result->addItem('exception', $e->getMessage());
+                $this->Result->addItem('rawdata', $this->rawdata);
+
+                if (isset($this->Query)) {
+
+                    if (isset($this->Query->ip)) {
+                        $this->Result->addItem('name', $this->Query->ip);
+                    } else {
+                        $this->Result->addItem('name', $this->Query->fqdn);
+                    }
+                } else {
+                    $this->Result->addItem('name', $query);
+                }
             }
         }
         
