@@ -134,6 +134,7 @@ class Socket extends AbstractAdapter
 
         if (isset($parsed_socket['port'])) {
             $config['port'] = $parsed_socket['port'];
+            $config['server'] = $parsed_socket['host'];
         }
 
         if ($this->proxyList !== false) {
