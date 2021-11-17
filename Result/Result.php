@@ -198,7 +198,7 @@ class Result extends AbstractResult
      */
     public function addItem($target, $value, $append = false)
     {
-        if (is_array($value) && sizeof($value) === 1) {
+        if (is_array($value) && sizeof($value) >= 1) {
             $value = $value[0];
         }
         // Don't overwrite existing values with empty values, unless we explicitly pass through NULL
