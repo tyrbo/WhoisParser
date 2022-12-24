@@ -548,6 +548,13 @@ class Result extends AbstractResult
             $timestamp = strtotime(str_replace('/', '.', $date));
         }
 
-        return (strlen($timestamp) ? strftime($dateformat, $timestamp) : $date);
+        if ($timestamp !== false) {
+            $datetime = new \DateTime();
+            $datetime->setTimestamp($timestamp);
+
+            return $datetime->format($dateformat);
+        }
+
+        return $date;
     }
 }

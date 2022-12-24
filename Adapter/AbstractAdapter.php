@@ -83,7 +83,7 @@ abstract class AbstractAdapter
     {
         $obj = null;
         // Ensure the custom namespace ends with a \
-        $customNamespace = rtrim($customNamespace, '\\') .'\\';
+        $customNamespace = rtrim($customNamespace ?? '', '\\') .'\\';
         if ((strpos($type, '\\') !== false) && class_exists($type)) {
             $obj = new $type($proxyConfig);
         } elseif ((strlen($customNamespace) > 1) && class_exists($customNamespace . ucfirst($type))) {

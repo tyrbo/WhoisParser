@@ -118,7 +118,7 @@ class Parser
      * @var string
      * @access protected
      */
-    protected $dateformat = '%Y-%m-%d %H:%M:%S';
+    protected $dateformat = 'Y-m-d H:i:s';
 
     /**
      * Activate cache
@@ -278,7 +278,7 @@ class Parser
             if ($this->cachePath !== null) {
                 $Parser->setCachePath($this->cachePath);
             }
-            $this->Query = $Parser->parse(filter_var($query, FILTER_SANITIZE_STRING));
+            $this->Query = $Parser->parse(filter_var($query, FILTER_UNSAFE_RAW));
         }
     }
 
@@ -293,7 +293,7 @@ class Parser
     public function call($query = '')
     {
         if ($query != '') {
-            $this->Query = filter_var($query, FILTER_SANITIZE_STRING);
+            $this->Query = filter_var($query, FILTER_UNSAFE_RAW);
         }
         
         $Config = $this->Config->getCurrent();
@@ -483,7 +483,7 @@ class Parser
      */
     public function setFormat($format = 'object')
     {
-        $this->format = filter_var($format, FILTER_SANITIZE_STRING);
+        $this->format = filter_var($format, FILTER_UNSAFE_RAW);
     }
 
     /**
@@ -495,7 +495,7 @@ class Parser
      * @param  string $dateformat
      * @return void
      */
-    public function setDateFormat($dateformat = '%Y-%m-%d %H:%M:%S')
+    public function setDateFormat($dateformat = 'Y-m-d H:i:s')
     {
         $this->dateformat = $dateformat;
     }

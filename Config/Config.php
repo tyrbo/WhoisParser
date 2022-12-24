@@ -73,7 +73,7 @@ class Config
     {
         if (empty($this->config)) {
             $this->config = parse_ini_file('whois.ini');
-            if (strlen($customIni)) {
+            if (strlen($customIni ?? '')) {
                 $this->customConfig = parse_ini_file($customIni);
             }
         }

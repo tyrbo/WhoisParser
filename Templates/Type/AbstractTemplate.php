@@ -106,7 +106,7 @@ abstract class AbstractTemplate
         $obj = null;
 
         // Ensure the custom namespace ends with a \
-        $customNamespace = rtrim($customNamespace, '\\') .'\\';
+        $customNamespace = rtrim($customNamespace ?? '', '\\') .'\\';
         if ((strpos($template, '\\') !== false) && class_exists($template, $customNamespace)) {
             $class = $template;
             $obj = new $class();
